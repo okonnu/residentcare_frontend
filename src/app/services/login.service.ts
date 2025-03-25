@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://residentcare-api.pepea.net/api/v1/login';
+  private apiUrl = 'https://residentcare-api.pepea.net/api/v1/login';
  
   constructor(private http: HttpClient, private router: Router,) {}
 
