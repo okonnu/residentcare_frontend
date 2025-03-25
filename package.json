@@ -1,5 +1,5 @@
 {
-  "name": "ResidentCare",
+  "name": "residentcare",
   "version": "0.0.2",
   "scripts": {
     "ng": "ng",
@@ -31,7 +31,7 @@
     "apexcharts": "^3.52.0",
     "ng-apexcharts": "^1.11.0",
     "ngx-scrollbar": "^12.0.0",
-    "ResidentCare": "file:",
+    "residentcare": "file:",
     "rxjs": "~7.5.0",
     "sass": "^1.57.1",
     "tslib": "^2.3.0",

@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  ResidentCare-frontend:
-    image: dag254/ResidentCare:latest
-    container_name: ResidentCare-frontend
+  residentcare-frontend:
+    image: dag254/residentcare:latest
+    container_name: residentcare-frontend
     ports:
       - "80:80"
     restart: always

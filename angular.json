@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ResidentCare": {
+    "residentcare": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
               "apexcharts",
               "bezier-easing"
             ],
-            "outputPath": "dist/ResidentCare",
+            "outputPath": "dist/residentcare",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ResidentCare:build:production"
+              "buildTarget": "residentcare:build:production"
             },
             "development": {
-              "buildTarget": "ResidentCare:build:development"
+              "buildTarget": "residentcare:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ResidentCare:build"
+            "buildTarget": "residentcare:build"
           }
         },
         "test": {

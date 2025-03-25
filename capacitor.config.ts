@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.ResidentCare.app',
-  appName: 'ResidentCare',
-  webDir: 'dist/ResidentCare'
+  appId: 'com.residentcare.app',
+  appName: 'Residentcare',
+  webDir: 'dist/residentcare'
 };
 
 export default config;
