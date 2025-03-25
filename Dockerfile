@@ -25,7 +25,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copy the Angular build output to the Nginx HTML directory
-COPY --from=build /app/dist/ResidentCare /usr/share/nginx/html
+COPY --from=build /app/dist/residentcare /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
