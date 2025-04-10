@@ -16,8 +16,6 @@ import { SidebarComponent } from './vertical/sidebar/sidebar.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import { HeaderComponent } from './vertical/header/header.component';
-import { AppHorizontalHeaderComponent } from './horizontal/header/header.component';
-import { AppHorizontalSidebarComponent } from './horizontal/sidebar/sidebar.component';
 import { AppBreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { CustomizerComponent } from './shared/customizer/customizer.component';
 import { UserService, User } from 'src/app/services/user.service';
@@ -36,12 +34,6 @@ interface apps {
   link: string;
 }
 
-interface quicklinks {
-  id: number;
-  title: string;
-  link: string;
-}
-
 @Component({
   selector: 'app-full',
   standalone: true,
@@ -54,8 +46,6 @@ interface quicklinks {
     NgScrollbarModule,
     TablerIconsModule,
     HeaderComponent,
-    AppHorizontalHeaderComponent,
-    AppHorizontalSidebarComponent,
     AppBreadcrumbComponent,
     CustomizerComponent,
   ],
@@ -81,7 +71,7 @@ export class FullComponent implements OnInit {
   private router = inject(Router);
   private breakpointObserver = inject(BreakpointObserver);
   private navService = inject(NavService);
-  public loggedinUser : User | null = this.userService.getUserFromSessionStorage();
+  public loggedinUser: User | null = this.userService.getUser();
   //get options from service
   options = this.settings.getOptions();
 
@@ -153,51 +143,8 @@ export class FullComponent implements OnInit {
     },
   ];
 
-  quicklinks: quicklinks[] = [
-    {
-      id: 1,
-      title: 'Pricing Page',
-      link: '/theme-pages/pricing',
-    },
-    {
-      id: 2,
-      title: 'Authentication Design',
-      link: '/authentication/side-login',
-    },
-    {
-      id: 3,
-      title: 'Register Now',
-      link: '/authentication/side-register',
-    },
-    {
-      id: 4,
-      title: '404 Error Page',
-      link: '/authentication/error',
-    },
-    {
-      id: 5,
-      title: 'Notes App',
-      link: '/apps/notes',
-    },
-    {
-      id: 6,
-      title: 'Employee App',
-      link: '/apps/employee',
-    },
-    {
-      id: 7,
-      title: 'Todo Application',
-      link: '/apps/todo',
-    },
-    {
-      id: 8,
-      title: 'Treeview',
-      link: '/theme-pages/treeview',
-    },
-  ];
-
   constructor(
-    
+
   ) {
     this.htmlElement = document.querySelector('html')!;
     this.layoutChangesSubscription = this.breakpointObserver
@@ -221,11 +168,11 @@ export class FullComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((e) => {
         this.content.scrollTo({ top: 0 });
-      });    
+      });
   }
 
   ngOnInit(): void {
-    console.log('FullComponent userService: on init ', );
+    console.log('FullComponent userService: on init ',);
     console.log(this.userService.getUser());
     console.log('FullComponent userService: on init ',);
   }

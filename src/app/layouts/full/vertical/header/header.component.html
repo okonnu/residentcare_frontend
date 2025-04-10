@@ -15,52 +15,24 @@
   }
 
   <!-- --------------------------------------------------------------- -->
-
-  <div class="d-none d-lg-flex">
-    <!-- --------------------------------------------------------------- -->
-    <!--  Links -->
-    <!-- --------------------------------------------------------------- -->
-    <a mat-button href="javascript:void(0)">Event Log</a>
-    <a mat-button href="javascript:void(0)">Care Plan</a>
-    <a mat-button href="javascript:void(0)">Calendar</a>
+  <!--  Search -->
+  <!-- --------------------------------------------------------------- -->
+<button mat-stroked-button class="d-flex align-items-center" (click)="openDialog()">
+  <div class="d-flex align-items-center">
+     Search Resident
   </div>
+</button>
 
   <span class="flex-1-auto"></span>
 
-  <!-- Mobile Menu -->
-  <button
+   <!-- Mobile Menu -->
+  <!-- <button
     mat-icon-button
     (click)="toggleMobileFilterNav.emit()"
     class="d-flex d-lg-none justify-content-center"
   >
     <i-tabler name="grid-dots" class="icon-20 d-flex"></i-tabler>
-  </button>
-
-  <!-- --------------------------------------------------------------- -->
-  <!--  Search -->
-  <!-- --------------------------------------------------------------- -->
-  <button mat-stroked-button class="d-none d-lg-flex" (click)="openDialog()">
-    <div class="d-flex align-items-center">
-      <i-tabler name="search" class="icon-20 d-flex m-r-10"></i-tabler> Search For A Resident ...
-    </div>
-  </button>
-
-  <!-- --------------------------------------------------------------- -->
-  <!-- langugage Dropdown -->
-  <!-- --------------------------------------------------------------- -->
-  <!-- <button [matMenuTriggerFor]="flags" mat-icon-button class="m-l-10">
-    <img [src]="selectedLanguage.icon" class="rounded-circle object-cover icon-20" />
-  </button>
-  <mat-menu #flags="matMenu" class="cardWithShadow">
-    @for(lang of languages; track lang) {
-    <button mat-menu-item (click)="changeLanguage(lang)">
-      <div class="d-flex align-items-center">
-        <img [src]="lang.icon" class="rounded-circle object-cover m-r-8 icon-20" />
-        <span class="mat-subtitle-1 f-s-14">{{ lang.language }}</span>
-      </div>
-    </button>
-    }
-  </mat-menu> -->
+  </button> -->
 
   <!-- --------------------------------------------------------------- -->
   <!-- Notifications Dropdown -->
@@ -133,27 +105,17 @@
           </div>
         </div>
       </div>
-      <div class="p-x-32">
-        @for(profile of profiledd; track profile.title) {
-        <a class="p-y-16 text-decoration-none d-block text-hover-primary" [routerLink]="[profile.link]">
-          <div class="d-flex align-items-center">
-            <span class="text-{{ profile.color }} bg-light-{{
-                profile.color
-              }} icon-50 d-flex align-items-center justify-content-center shadow-none rounded">
-              <i-tabler [name]="profile.img" class="icon-20" />
-            </span>
-
-            <div class="m-l-16">
-              <h5 class="f-s-14 f-w-600 m-0 textprimary mat-subtitle-1 hover-text">
-                {{ profile.title }}
-              </h5>
-              <span class="mat-body-1">{{ profile.subtitle }}</span>
-            </div>
-          </div>
-        </a>
-        }
-      </div>
-
+      <div class="p-x-32 p-y-16">
+        <button mat-menu-item class="p-x-0 p-y-12 d-flex align-items-center">
+          <i-tabler name="settings" class="icon-18 m-r-16"></i-tabler> Event Log
+        </button>
+        <button mat-menu-item class="p-x-0 p-y-12 d-flex align-items-center">
+          <i-tabler name="user" class="icon-18 m-r-16"></i-tabler> Care Plan
+        </button>
+        <button mat-menu-item class="p-x-0 p-y-12 d-flex align-items-center">
+          <i-tabler name="calendar" class="icon-18 m-r-16"></i-tabler> Calendar
+        </button>
+        </div>
       <div class="p-y-12 p-x-32">
         <button [routerLink]="['/authentication/login']" mat-flat-button color="primary" class="w-100">
           Logout

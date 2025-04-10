@@ -27,7 +27,8 @@ export class AppSideLoginComponent {
     try {
       const success =  await this.userService.login(uname, p);
       if (success) {
-        console.log('Login successful on sidelogin' + this.userService.getUser());
+        console.log('Login successful on sidelogin');
+        console.log(this.userService.getUser());
         this.router.navigate(['/starter']);
       } else {
         this.msg = 'Invalid credentials';

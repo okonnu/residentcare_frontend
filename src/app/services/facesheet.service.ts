@@ -15,15 +15,8 @@ export interface User {
 })
 export class UserService {
   private loading = signal(false);
+  private currentUser = signal<User | null>(null);
   private tokenExpiry = signal<number | null>(null);
-  private currentUser = signal<User>({
-    id: 0,
-    firstName: '...',
-    lastName: '...',
-    email: '...@...com',
-    roles: [],
-    tokenExpiry: ''
-  });
 
   // Computed signal for countdown
   tokenExpiryCountdown = computed(() => {
@@ -40,13 +33,12 @@ export class UserService {
     const body = JSON.stringify({ email, password });
 
     try {
-      const response = await fetch('http://localhost:8081/api/v1/login', {
+      const response = await fetch('https://residentcare-api.pepea.net/api/v1/login', {
         method: 'POST',
         headers: headers,
         body: body
       });
 
-      
       if (response.ok) {
         const data = await response.json();
         const token = data.data.access_token;
@@ -58,19 +50,9 @@ export class UserService {
 
         // Store user information in session storage
         sessionStorage.setItem('user_info', JSON.stringify(userInfo));
-        console.log('Non Updated User info:');
-        console.log(this.currentUser());
+
         // Update the currentUser signal
-        this.currentUser.update(() => ({
-          id: userInfo.id,
-          firstName: userInfo.firstName,
-          lastName: userInfo.lastName,
-          email: userInfo.email,
-          roles: userInfo.roles,
-          tokenExpiry: userInfo.tokenExpiry
-        }));
-        console.log('Updated User info:');
-        console.log(this.currentUser());
+        this.currentUser.set(userInfo);
 
         // Set the token expiry time
         this.tokenExpiry.set(Math.floor(Date.now() / 1000) + expiry);
@@ -91,14 +73,7 @@ export class UserService {
   async logout() {
     sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('user_info');
-    this.currentUser.set({
-      id: 0,
-      firstName: '...',
-      lastName: '...',
-      email: '...@...com',
-      roles: [],
-      tokenExpiry: ''
-    });
+    this.currentUser.set(null);
     this.router.navigate(['/login']);
   }
   public getUser() : User | null {
