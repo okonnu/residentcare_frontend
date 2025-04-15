@@ -33,7 +33,7 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'ADLs',
-    iconName: 'check-square',
+    iconName: 'file-text',
     bgcolor: 'primary',
     route: '/adls',
   },
@@ -75,7 +75,7 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Billing',
-    iconName: 'dollar-sign',
+    iconName: 'file-text',
     bgcolor: 'primary',
     route: '/billing',
   },
@@ -84,7 +84,7 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Analytics & Reports',
-    iconName: 'bar-chart',
+    iconName: 'file-text',
     bgcolor: 'primary',
     route: '/analytics',
   },

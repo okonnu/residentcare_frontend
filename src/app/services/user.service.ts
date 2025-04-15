@@ -45,7 +45,6 @@ export class UserService {
         headers: headers,
         body: body
       });
-
       
       if (response.ok) {
         const data = await response.json();

@@ -18,7 +18,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { SearchResidentServicesService } from 'src/app/services/search-resident.services.service';
+import { SearchResidentServicesService } from 'src/app/services/search-resident.service';
 
 
 interface notifications {
@@ -126,7 +126,7 @@ export class AppSearchDialogComponent {
 
   searchResident(): void {
     this.searchService.searchResident(this.searchText.trim());
-    
+
   }
   navItemsData = this.searchService.searchResults()
 

@@ -3,82 +3,91 @@
     <div class="position-relative shaper-wrapper">
       <div class="w-100 position-relative rounded bg-white auth-card">
         <div class="auth-body">
-          @if(options.theme === 'light') {
-          <!-- <a [routerLink]="['/dashboards/dashboard1']" class="m-t-20 d-flex">
-            <img src="./assets/images/logos/fth/dark-horizontal-logo.svg" class="align-middle m-2" alt="logo" />
-          </a> -->
-          } @if(options.theme === 'dark') {
-          <!-- <a [routerLink]="['/dashboards/dashboard1']" class="m-t-20 d-flex">
-            <img src="./assets/images/logos/light-horizontal-logo.png" class="align-middle m-2" alt="logo" />
-          </a> -->
-          }
-
           <div class="row">
             <div class="col-lg-6">
-              <div class="align-items-center justify-content-center d-flex w-100 logo-container">
-                <img src="./assets/images/logos/fth/dark-vertical-logo.svg" class="align-middle m-0 h-25-mobile w-100" alt="logo" />
+              <div
+                class="align-items-center justify-content-center d-flex w-100 logo-container"
+              >
+                <img
+                  src="./assets/images/logos/fth/dark-vertical-logo.svg"
+                  class="align-middle m-0 h-25-mobile w-100"
+                  alt="logo"
+                />
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="d-flex align-items-start align-items-lg-center justify-content-center">
+              <div
+                class="d-flex align-items-start align-items-lg-center justify-content-center"
+              >
                 <div class="row justify-content-center w-100">
                   <div class="col-lg-11">
                     <h3 class="m-20 d-flex justify-content-center">
                       Account Login
                     </h3>
-                    <!-- <div class="row m-t-40">
-                      <div class="col-12 col-sm-6">
-                        <button mat-stroked-button class="w-100 m-b-4">
-                          <div class="d-flex align-items-center">
-                            <img src="/assets/images/svgs/google-icon.svg" alt="google" width="16" class="m-r-8" />
-                            Sign in with Google
-                          </div>
-                        </button>
-                      </div>
-                      <div class="col-12 col-sm-6">
-                        <button mat-stroked-button class="w-100 d-flex align-items-center m-b-4">
-                          <div class="d-flex align-items-center">
-                            <img src="/assets/images/svgs/facebook-icon.svg" alt="facebook" width="40" class="m-r-4" />
-                            Sign in with FB
-                          </div>
-                        </button>
-                      </div>
-                    </div>
 
-                    <div class="or-border m-t-30">or sign in with</div> -->
+                    <form
+                      class="m-t-10"
+                      [formGroup]="loginForm"
+                      (ngSubmit)="onLoginFormSubmitted()"
+                    >
+                      <!-- Email Field -->
+                      <form-input
+                        label="Email"
+                        type="email"
+                        formControlName="email"
+                        appearance="outline"
+                        color="primary"
+                        [required]="true"
+                        [errorMessages]="{
+                          required: 'Email is required',
+                          email: 'Please enter a valid email address'
+                        }"
+                        class="m-b-12"
+                      ></form-input>
 
-                    <!-- <div class="bg-light-primary text-primary f-w-500 rounded p-16 m-t-24 text-center">
-                      <span class="m-r-8">email : admin </span> ||<span class="m-l-8">
-                        Password : admin123</span>
-                    </div> -->
-
-                    <form class="m-t-10" (ngSubmit)="check(u1.value, p2.value)">
-                      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
-                      <mat-form-field appearance="outline" class="w-100" color="primary">
-                        <input matInput required="" #u1 />
-                      </mat-form-field>
-
-                      <!-- password -->
-                      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
-                      <mat-form-field appearance="outline" class="w-100" color="primary">
-                        <input matInput type="password" required="" #p2 />
-                      </mat-form-field>
+                      <!-- Password Field -->
+                      <form-input
+                        label="Password"
+                        type="password"
+                        formControlName="password"
+                        appearance="outline"
+                        color="primary"
+                        [required]="true"
+                        [errorMessages]="{
+                          required: 'Password is required',
+                          minlength: 'Password must be at least 8 characters'
+                        }"
+                        class="m-b-12"
+                      ></form-input>
 
                       <div class="d-block d-lg-flex align-items-center m-b-12">
-                        <mat-checkbox color="primary">Remember this Device</mat-checkbox>
-                        <a [routerLink]="['/']"
-                          class="text-primary f-w-600 text-decoration-none m-l-auto d-block f-s-14">Forgot Password
-                          ?</a>
+                      
+                        <a
+                          [routerLink]="['/']"
+                          class="text-primary f-w-600 text-decoration-none m-l-auto d-block f-s-14"
+                        >
+                          Forgot Password?
+                        </a>
                       </div>
-                      <button mat-flat-button color="primary" class="w-100" (click)="check(u1.value, p2.value)">
+
+                      <button
+                        mat-flat-button
+                        color="primary"
+                        class="w-100"
+                        type="submit"
+                      >
                         Sign In
                       </button>
-                      <!-- input -->
+                     
                     </form>
-                    <span class="d-block f-w-500 d-block m-t-24">New to Fast Thrive Holdings?
-                      <a [routerLink]="['/authentication/register']"
-                        class="text-decoration-none text-primary f-w-500 f-s-14">
-                        Create an account</a>
+                    <span class="d-block f-w-500 d-block m-t-24"
+                      >New to Fast Thrive Holdings?
+                      <a
+                        [routerLink]="['/authentication/register']"
+                        class="text-decoration-none text-primary f-w-500 f-s-14"
+                      >
+                        Create an account</a
+                      >
                     </span>
                   </div>
                 </div>

@@ -1,40 +1,48 @@
-import { Component } from '@angular/core';
-import { CoreService } from 'src/app/services/core.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { AuthService } from "../../../services/auth.service";
+import { Login } from "../../../types/auth.interface";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { InputComponent } from "../../../components/form-input/form-input.component";
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from 'src/app/material.module';
-import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
+import { MaterialModule } from '../../../material.module';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-side-login',
+  selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, MaterialModule, NgIf, FormsModule, ReactiveFormsModule],
+  imports: [
+    InputComponent,
+    ReactiveFormsModule,
+    RouterModule,
+    MaterialModule
+  ],
   templateUrl: './side-login.component.html',
-  styleUrls: ['./side-login.component.css'],
-  providers: [UserService],
+  styleUrl: './side-login.component.css'
 })
 
-export class AppSideLoginComponent {
-  options = this.settings.getOptions();
-  msg = '';
-  constructor(private settings: CoreService, private router: Router, private userService: UserService,) {}
+export class AppSideLoginComponent implements OnInit {
+  private readonly authService = inject(AuthService);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly toastr = inject(ToastrService);
+  loginForm!: FormGroup;
 
-  async check(uname: string, p: string) {
-    try {
-      const success =  await this.userService.login(uname, p);
-      if (success) {
-        console.log('Login successful on sidelogin');
-        console.log(this.userService.getUser());
-        this.router.navigate(['/starter']);
-      } else {
-        this.msg = 'Invalid credentials';
-      }
-    } catch (error) {
-      this.msg = 'An error occurred during login';
-    }
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    });
   }
+
+  onLoginFormSubmitted() {
+    if (!this.loginForm.valid) {
+      this.toastr.error('Please fill in all required fields correctly.');
+      return;
+    }
+    this.authService.login(this.loginForm.value as Login).pipe(
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe();
+  }
+
 }
