@@ -8,7 +8,7 @@ export const navItems: NavItem[] = [
     displayName: 'Dashboard',
     iconName: 'home',
     bgcolor: 'primary',
-    route: '/dashboard',
+    route: 'dash',
   },
   {
     navCap: 'Residents',
@@ -23,19 +23,19 @@ export const navItems: NavItem[] = [
     displayName: 'Vitals',
     iconName: 'activity',
     bgcolor: 'primary',
-    route: '/vitals',
+    route: 'vitals',
   },
   {
     displayName: 'Orders',
     iconName: 'file-text',
     bgcolor: 'primary',
-    route: '/orders',
+    route: 'orders',
   },
   {
     displayName: 'ADLs',
     iconName: 'file-text',
     bgcolor: 'primary',
-    route: '/adls',
+    route: 'adls',
   },
   {
     navCap: 'Care & Medications',
@@ -44,19 +44,19 @@ export const navItems: NavItem[] = [
     displayName: 'Charting',
     iconName: 'clipboard',
     bgcolor: 'primary',
-    route: '/charting',
+    route: 'charting',
   },
   {
     displayName: 'Medications',
     iconName: 'pill',
     bgcolor: 'primary',
-    route: '/medications',
+    route: 'medications',
   },
   {
     displayName: 'Pharmacy',
     iconName: 'shopping-cart',
     bgcolor: 'primary',
-    route: '/pharmacy',
+    route: 'pharmacy',
   },
   {
     navCap: 'Operations',
@@ -65,19 +65,19 @@ export const navItems: NavItem[] = [
     displayName: 'Shift Management',
     iconName: 'users',
     bgcolor: 'primary',
-    route: '/shift-management',
+    route: 'shift-management',
   },
   {
     displayName: 'Inventory',
     iconName: 'box',
     bgcolor: 'primary',
-    route: '/inventory',
+    route: 'inventory',
   },
   {
     displayName: 'Billing',
     iconName: 'file-text',
     bgcolor: 'primary',
-    route: '/billing',
+    route: 'billing',
   },
   {
     navCap: 'Administration',
@@ -86,12 +86,12 @@ export const navItems: NavItem[] = [
     displayName: 'Analytics & Reports',
     iconName: 'file-text',
     bgcolor: 'primary',
-    route: '/analytics',
+    route: 'analytics',
   },
   {
     displayName: 'User Management',
     iconName: 'settings',
     bgcolor: 'primary',
-    route: '/admin',
+    route: 'admin',
   }
 ];

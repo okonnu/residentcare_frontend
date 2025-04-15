@@ -19,6 +19,7 @@ import { HeaderComponent } from './vertical/header/header.component';
 import { AppBreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
 import { CustomizerComponent } from './shared/customizer/customizer.component';
 import { UserService, User } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 const MOBILE_VIEW = 'screen and (max-width: 768px)';
 const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
@@ -57,7 +58,12 @@ export class FullComponent implements OnInit {
   navItems = navItems;
 
   @ViewChild('leftsidenav')
-  public sidenav: MatSidenav;
+  public leftsidenav: MatSidenav;
+
+  // Alias for leftsidenav to maintain compatibility with template references
+  get sidenav(): MatSidenav {
+    return this.leftsidenav;
+  }
   resView = false;
   @ViewChild('content', { static: true }) content!: MatSidenavContent;
   private layoutChangesSubscription = Subscription.EMPTY;
@@ -71,9 +77,14 @@ export class FullComponent implements OnInit {
   private router = inject(Router);
   private breakpointObserver = inject(BreakpointObserver);
   private navService = inject(NavService);
+  private authService = inject(AuthService);
   public loggedinUser: User | null = this.userService.getUser();
   //get options from service
   options = this.settings.getOptions();
+
+  logout(): void {
+    this.authService.logout();
+  }
 
   get isOver(): boolean {
     return this.isMobileScreen;

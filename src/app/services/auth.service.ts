@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 @Injectable({
     providedIn: 'root'
 })
-    
+
 export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly router = inject(Router);
@@ -55,17 +55,11 @@ export class AuthService {
     }
 
     logout(): void {
-        // if you don't have any backend route to invalidate the refresh token
-        // then just remove sessionStorage items and redirect to login route
-        const refresh_token = sessionStorage.getItem('refresh_token');
-        this.http.post<LoginResponse>(`${environment.apiUrl}/token/invalidate`, { refresh_token }, this.CONTEXT)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-                sessionStorage.removeItem('access_token');
-                sessionStorage.removeItem('refresh_token');
-                sessionStorage.removeItem('user_info');
-                this.router.navigate(['/login']);
-            });
+        // Clear session storage and navigate to login page
+        sessionStorage.removeItem('access_token');
+        sessionStorage.removeItem('refresh_token');
+        sessionStorage.removeItem('user_info');
+        this.router.navigate(['login']);
     }
 
     storeTokens(data: LoginSuccess): void {
@@ -75,7 +69,7 @@ export class AuthService {
     }
 
     refreshToken(): Observable<RestResponse | null> {
-        const refresh_token = localStorage.getItem('refresh_token');
+        const refresh_token = sessionStorage.getItem('refresh_token');
         if (!refresh_token) {
             return of();
         }

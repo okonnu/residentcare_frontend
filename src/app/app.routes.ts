@@ -31,6 +31,86 @@ export const routes: Routes = [
       {
         path: 'dash',
         component: DashboardComponent,
+        data: {
+          title: 'Dashboard',
+        },
+      },
+      {
+        path: 'vitals',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Vitals',
+        },
+      },
+      {
+        path: 'orders',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Orders',
+        },
+      },
+      {
+        path: 'adls',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'ADLs',
+        },
+      },
+      {
+        path: 'charting',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Charting',
+        },
+      },
+      {
+        path: 'medications',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Medications',
+        },
+      },
+      {
+        path: 'pharmacy',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Pharmacy',
+        },
+      },
+      {
+        path: 'shift-management',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Shift Management',
+        },
+      },
+      {
+        path: 'inventory',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Inventory',
+        },
+      },
+      {
+        path: 'billing',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Billing',
+        },
+      },
+      {
+        path: 'analytics',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'Analytics & Reports',
+        },
+      },
+      {
+        path: 'admin',
+        component: FaceSheetComponent, // Using FaceSheetComponent as a placeholder
+        data: {
+          title: 'User Management',
+        },
       },
     ],
   },

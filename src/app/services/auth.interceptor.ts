@@ -25,7 +25,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     }
 };
 const addAuthorizationHeader = (req: HttpRequest<any>) => {
-    const token = localStorage.getItem('access_token');
+    const token = sessionStorage.getItem('access_token');
     return req.clone({
         headers: req.headers.set('Authorization', `Bearer ${token}`)
     });
