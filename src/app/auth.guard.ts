@@ -17,15 +17,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
-    // Temporarily bypass authentication for testing
-    return true;
-
-    // Original code:
-    // if (sessionStorage.getItem('user_info') != null) {
-    //   return true;
-    // } else {
-    //   this.routes.navigate(['/authentication/login']);
-    //   return false;
-    // }
+    if (sessionStorage.getItem('user_info') != null) {
+      return true;
+    } else {
+      this.routes.navigate(['/authentication/login']);
+      return false;
+    }
   }
 }

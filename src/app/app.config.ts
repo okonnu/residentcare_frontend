@@ -83,7 +83,7 @@ export const appConfig: ApplicationConfig = {
       timeOut: 3000, // Toast duration in milliseconds
       positionClass: 'toast-bottom-right', // Toast position
       closeButton: true, // Show close button
-      progressBar: true, 
+      progressBar: true,
     }),
   ],
 };

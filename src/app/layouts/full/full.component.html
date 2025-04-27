@@ -115,11 +115,6 @@
         <!-- ============================================================== -->
         <router-outlet></router-outlet>
       </div>
-      <div class="customizerBtn">
-        <button mat-fab color="primary" (click)="customizerRight.toggle()">
-          <mat-icon>settings</mat-icon>
-        </button>
-      </div>
     </main>
   </mat-sidenav-content>
   <mat-sidenav #customizerRight mode="over" position="end">
@@ -143,17 +138,10 @@
   <div>
     <div class="d-flex justify-content-between align-items-center">
       <div class="branding">
-        @if(options.theme === 'light') {
-        <a href="/">
+         <a href="/">
           <img src="./assets/images/logos/fth/dark-horizontal-logo.svg"
             class="align-middle m-2 w-100" alt="logo" />
         </a>
-        } @else {
-        <a href="/">
-          <img src="./assets/images/logos/light-horizontal-logo.png"
-            class="align-middle m-2 w-100" alt="logo" />
-        </a>
-        }
       </div>
       <button mat-icon-button (click)="filterNavRight.toggle()"
         class="d-flex justify-content-center">
